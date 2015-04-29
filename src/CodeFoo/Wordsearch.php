@@ -27,9 +27,9 @@ class Wordsearch {
     'downleft' => [1, -1]
   ];
 
-  public function __construct($puzzle)
+  public function __construct(WordsearchBuilder $builder)
   {
-    $this->puzzle = $puzzle;
+    $this->puzzle = $builder->create();
   }
 
   /**
@@ -71,7 +71,8 @@ class Wordsearch {
   private function checkAllDirections(Word $word)
   {
     list($rowIndex, $charIndex) = $this->startPoint;
-    while ($directionOffsets = array_shift($this->directionMap))
+    $directions = $this->directionMap;
+    while ($directionOffsets = array_shift($directions))
     {
       if ($this->wordFoundThatDirection($word, $directionOffsets))
       {

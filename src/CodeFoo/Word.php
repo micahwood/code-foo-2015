@@ -8,20 +8,23 @@ class Word {
 
   protected $end = [];
 
+  protected $found = false;
+
   function __construct($word)
   {
-    $this->word = $word;
+    $this->word = strtolower($word);
   }
 
   public function foundAt($start, $end)
   {
     $this->start = $start;
     $this->end = $end;
+    $this->found = true;
   }
 
   public function isFound()
   {
-    return count($this->start) + count($this->end) > 0;
+    return $this->found;
   }
 
   public function length()
@@ -38,7 +41,7 @@ class Word {
   {
     if ($this->isFound())
     {
-      return printf('%s was found at position %s - %s',
+      return sprintf('%s was found at position %s - %s',
           $this->word, implode(', ', $this->start), implode(', ', $this->end));
     }
 
