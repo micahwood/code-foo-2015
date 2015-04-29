@@ -2,19 +2,52 @@
 
 class Word {
 
+  use WordNormalize;
+
+  /**
+   * The word to search for in a wordsearch
+   *
+   * @var string
+   */
   protected $word;
 
+  /**
+   * The coordinates of the first letter of the word in the wordsearch
+   *
+   * @var array
+   */
   protected $start = [];
 
+  /**
+   * The coordinates of the last letter of the word in the wordsearch
+   *
+   * @var array
+   */
   protected $end = [];
 
+  /**
+   * Flag for determining if the word was found in the wordsearch
+   *
+   * @var boolean
+   */
   protected $found = false;
 
+  /**
+   * Create a new word to look for in a wordsearch
+   *
+   * @param string $word
+   */
   function __construct($word)
   {
-    $this->word = strtolower($word);
+    $this->word = $this->normalize($word);
   }
 
+  /**
+   * Mark where the word was found in the wordsearch
+   *
+   * @param array $start
+   * @param array $end
+   */
   public function foundAt($start, $end)
   {
     $this->start = $start;
@@ -22,21 +55,41 @@ class Word {
     $this->found = true;
   }
 
+  /**
+   * Check if word has been found in the wordsearch
+   *
+   * @return boolean
+   */
   public function isFound()
   {
     return $this->found;
   }
 
+  /**
+   * Get the length of the word
+   *
+   * @return int
+   */
   public function length()
   {
     return strlen($this->word);
   }
 
+  /**
+   * Get the first letter of the word
+   *
+   * @return char
+   */
   public function firstLetter()
   {
     return $this->word[0];
   }
 
+  /**
+   * Print the current status of the word and the location it was found at
+   *
+   * @return string
+   */
   public function status()
   {
     if ($this->isFound())
@@ -52,26 +105,4 @@ class Word {
   {
     return $this->word;
   }
-
-
-  // /** ArrayAccess methods */
-  // public function offsetSet($offset, $value)
-  // {
-  //   $this->word[$offset] = $value;
-  // }
-
-  // public function offsetExists($offset)
-  // {
-  //   return isset($this->word[$offset]);
-  // }
-
-  // public function offsetUnset($offset)
-  // {
-  //   unset($this->word[$offset]);
-  // }
-
-  // public function offsetGet($offset)
-  // {
-  //   return isset($this->word[$offset]) ? $this->word[$offset] : null;
-  // }
 }

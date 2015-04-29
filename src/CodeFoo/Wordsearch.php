@@ -16,6 +16,17 @@ class Wordsearch {
    */
   protected $startPoint;
 
+  /**
+   * A map of offsets to apply to each index of the wordsearch when searching
+   * each direction. Offsets are used to determine the next index to search
+   * relative to the current character being checked.
+   *
+   *      --   -0   -+
+   *      0-    *   0+
+   *      +-   +0   ++
+   *
+   * @var array
+   */
   protected $directionMap = [
     'right' => [0, 1],
     'left' => [0, -1],
@@ -27,6 +38,11 @@ class Wordsearch {
     'downleft' => [1, -1]
   ];
 
+  /**
+   * Create a new wordsearch from the provided builder
+   *
+   * @param WordsearchBuilder $builder
+   */
   public function __construct(WordsearchBuilder $builder)
   {
     $this->puzzle = $builder->create();
@@ -55,7 +71,16 @@ class Wordsearch {
     return false;
   }
 
-
+  /**
+   * Check if the first letter of the word is on the current row,
+   * and search for the word in all directions if it is.
+   *
+   * @param Word $word
+   * @param int $rowIndex
+   * @param char $char
+   * @param int $charIndex
+   * @return boolean
+   */
   private function wordIsFoundOnRow(Word $word, $rowIndex, $char, $charIndex)
   {
     $found = false;
@@ -68,6 +93,13 @@ class Wordsearch {
     return $found;
   }
 
+  /**
+   * Using the directionMap, check each direction from the current location
+   * to try and find the word
+   *
+   * @param Word $word
+   * @return boolean
+   */
   private function checkAllDirections(Word $word)
   {
     list($rowIndex, $charIndex) = $this->startPoint;
@@ -83,6 +115,13 @@ class Wordsearch {
     return false;
   }
 
+  /**
+   * Search in a specific direction for the word
+   *
+   * @param Word $word
+   * @param array $directionOffsets
+   * @return boolean
+   */
   public function wordFoundThatDirection(Word $word, $directionOffsets)
   {
     $length = $word->length();
@@ -100,6 +139,16 @@ class Wordsearch {
     return true;
   }
 
+  /**
+   * Check if the next character in the wordsearch is not out of bonds and
+   * that it matches the next character of the word
+   *
+   * @param Word $word
+   * @param int $wordIndex
+   * @param int $rowOffset
+   * @param int $colOffset
+   * @return boolean
+   */
   private function nextCharIsFound(Word $word, $wordIndex, $rowOffset, $colOffset)
   {
     $row = $this->startPoint[0] + $rowOffset;
@@ -110,7 +159,14 @@ class Wordsearch {
            substr($word, $wordIndex, 1) == $this->puzzle[$row][$col];
   }
 
-
+  /**
+   * Determine where the last letter of the word was found
+   *
+   * @param int $rowOffset
+   * @param int $colOffset
+   * @param int $length
+   * @return array
+   */
   private function findEndPointForDirection($rowOffset, $colOffset, $length)
   {
     list($row, $col) = $this->startPoint;
@@ -120,6 +176,15 @@ class Wordsearch {
     return [$endRow, $endCol];
   }
 
+  /**
+   * Calculate the coordinates of the last letter of
+   * the word based on the directionMap offsets
+   *
+   * @param int $start
+   * @param int $offset
+   * @param int $length
+   * @return int
+   */
   private function calculatePointForDirection($start, $offset, $length)
   {
     return ($offset == 0) ? $start : $start + ($length * $offset) + (-1 * $offset);
