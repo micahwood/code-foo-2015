@@ -7,7 +7,7 @@ angular
 function videoItem() {
   var directive = {
     restrict: 'E',
-    templateUrl: 'scripts/videos/videoItem.html'
+    templateUrl: 'views/videoItem.html'
   };
 
   return directive;

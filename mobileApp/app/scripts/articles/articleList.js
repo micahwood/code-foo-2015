@@ -7,7 +7,7 @@ angular
 function articleList() {
   var directive = {
     restrict: 'E',
-    templateUrl: 'scripts/articles/articleList.html',
+    templateUrl: 'views/articleList.html',
     controller: 'List',
     controllerAs: 'vm'
   };

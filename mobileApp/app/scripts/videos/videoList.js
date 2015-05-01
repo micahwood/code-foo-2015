@@ -7,7 +7,7 @@ angular
 function videoList() {
   var directive = {
     restrict: 'E',
-    templateUrl: 'scripts/videos/videoList.html',
+    templateUrl: 'views/videoList.html',
     controller: 'List',
     controllerAs: 'vm'
   };

@@ -7,7 +7,7 @@ angular
 function articleItem() {
   var directive = {
     restrict: 'E',
-    templateUrl: 'scripts/articles/articleItem.html',
+    templateUrl: 'views/articleItem.html',
   };
 
   return directive;
