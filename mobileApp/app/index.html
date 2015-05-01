@@ -19,14 +19,13 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-controller="Main as main">
+  <body ng-controller="Main as main" class="ng-cloak">
 
     <h1 class="section-title">{{ main.activeSection }}</h1>
     <div class="container">
       <nav role="navigation">
         <ul class="nav nav--rounded">
           <li ng-repeat="section in ::main.sections"
-              ng-click="main.updateSection(section.title)"
               ng-class="main.isActive(section.title)" class="nav__item">
             <a ng-href="{{:: section.link }}">{{:: section.title }}</a>
           </li>

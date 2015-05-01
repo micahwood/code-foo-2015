@@ -1,13 +1,13 @@
 .section-title {
   color: $header-color;
-  font-size: 2.4em;
+  font-size: 2.4rem;
   line-height: 1;
   margin: 36px 0 24px $base-side-margin;
   text-transform: uppercase;
 }
 
 .nav {
-  font-size: 1.2em;
+  font-size: 1.2rem;
   text-transform: uppercase;
   border: 2px solid $ign-red;
   padding: 0;
@@ -26,7 +26,7 @@
   width: 50%;
   color: $ign-red;
   font-weight: bold;
-  line-height: 2em;
+  line-height: 2rem;
   text-align: center;
   cursor: pointer;
   &.active {
@@ -45,14 +45,15 @@
   border-radius: 4px;
   padding: 20px 0 10px;
   overflow: hidden;
+  min-height: 50vh;
   &:before {
     content: "";
     background-color: $ign-red;
     height: 44px;
     width: 12px;
     position: absolute;
-    top: 215px;
-    left: 23px;
+    top: 200px;
+    left: 14px;
   }
 }
 
@@ -66,15 +67,15 @@
 }
 
 .item__body {
-  padding-right: 12px;
-  flex-basis: 86%;
+  padding-right: 10px;
+  flex-basis: 80%;
 }
 
 .item__index {
-  flex-basis: 14%;
+  flex-basis: 20%;
   text-align: center;
   font-weight: bold;
-  font-size: 1.2em;
+  font-size: 1.2rem;
   color: $base-font-dark;
   border-bottom: 1px dotted $base-font-light;
 }
@@ -85,10 +86,10 @@
 }
 
 .item__duration {
-  flex-basis: 14%;
+  flex-basis: 20%;
   color: $base-font-light;
   font-weight: bold;
-  font-size: 1.2em;
+  font-size: 1.2rem;
 }
 
 .load-more {
