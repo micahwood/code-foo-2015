@@ -11,8 +11,8 @@ function pad() {
     }
     number = number.toString(10);
     if (number.length < 2) {
-      number = "0" + number;
+      number = '0' + number;
     }
     return number;
-  }
+  };
 }
