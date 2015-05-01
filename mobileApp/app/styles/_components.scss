@@ -1,0 +1,125 @@
+.section-title {
+  color: $header-color;
+  font-size: 2.4em;
+  line-height: 1;
+  margin: 36px 0 24px $base-side-margin;
+  text-transform: uppercase;
+}
+
+.nav {
+  font-size: 1.2em;
+  text-transform: uppercase;
+  border: 2px solid $ign-red;
+  padding: 0;
+  box-sizing: border-box;
+  margin: 0 $base-side-margin;
+}
+
+.nav--rounded {
+  border-radius: $base-side-margin;
+  overflow: hidden;
+}
+
+.nav__item {
+  display: inline-block;
+  margin: 0 auto;
+  width: 50%;
+  color: $ign-red;
+  font-weight: bold;
+  line-height: 2em;
+  text-align: center;
+  cursor: pointer;
+  &.active {
+    background-color: $ign-red;
+    color: white;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+}
+
+.container {
+  background-color: $container-color;
+  border-radius: 4px;
+  padding: 20px 0 10px;
+  overflow: hidden;
+  &:before {
+    content: "";
+    background-color: $ign-red;
+    height: 44px;
+    width: 12px;
+    position: absolute;
+    top: 215px;
+    left: 23px;
+  }
+}
+
+.item {
+  box-sizing: border-box;
+  display: flex;
+}
+
+.item__section {
+  border-bottom: 1px solid $base-font-light;
+}
+
+.item__body {
+  padding-right: 12px;
+  flex-basis: 86%;
+}
+
+.item__index {
+  flex-basis: 14%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2em;
+  color: $base-font-dark;
+  border-bottom: 1px dotted $base-font-light;
+}
+
+.item__description {
+  margin-top: 2px;
+  color: $base-font-light;
+}
+
+.item__duration {
+  flex-basis: 14%;
+  color: $base-font-light;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.load-more {
+  display: block;
+  cursor: pointer;
+  margin-left: 11%;
+}
+
+.section-animate {
+  &.ng-enter {
+    animation: slide-in 0.3s ease-in 0.3s both;
+  }
+  &.ng-leave {
+    animation: slide-out 0.3s ease-in 0s both;
+  }
+}
+
+@keyframes slide-out {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
+@keyframes slide-in {
+  0% {
+    transform: translate3d(-100%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}

@@ -1,0 +1,27 @@
+body {
+  font-family: $font-family;
+  font-size: $font-size;
+  color: $base-font-color;
+  background-color: $bg-color;
+  padding: 0 $base-side-margin 15px;
+}
+
+ol {
+  position: relative;
+  padding: 0;
+  li:last-of-type div {
+    border-bottom: none;
+  }
+}
+
+li {
+  list-style: none;
+}
+
+h3 {
+  margin-bottom: 0;
+}
+
+p {
+  margin-top: 22px;
+}

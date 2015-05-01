@@ -1,0 +1,12 @@
+<div class="item">
+  <div class="item__section item__index">
+    <p>{{ $index | pad:1 }}</p>
+  </div>
+  <div class="item__section item__body">
+    <h3 class="item__header">{{ video.name }}</h3>
+    <p class="item__description">{{ video.description }}</p>
+  </div>
+  <div class="item__section item__duration">
+    <p>{{ video.duration | time }}</p>
+  </div>
+</div>
